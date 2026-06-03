@@ -47,7 +47,7 @@ The kubectl get pods command lists all the running and pending pods in the curre
 
 ### Few-Shot Prompting
 
-In few-shot prompting, you provide the AI with a few examples to guide its response.
+You provide **one or two examples** of the expected input and output format before asking the final question. This aligns the AI to your specific coding standards.
 
 Example 1: Write a Shell Script to Create and Archive Logs
 
@@ -107,62 +107,31 @@ kubectl scale deployment nginx --replicas=5
 
 ### Chain of Thought (CoT) Prompting
 
-CoT prompting encourages the AI to "think step-by-step" to improve the accuracy of complex responses.
+Forces the AI to break down complex logic **step-by-step** before spitting out code. This drastically reduces AI hallucinations in complex infrastructure environments.
+* **Best for:** Incidents, performance bottlenecks, and tricky network routing issues.
+* **Prompt:**
+    > "Our microservice is experiencing intermittent 504 Gateway Timeouts behind an AWS ALB. Walk through a step-by-step troubleshooting workflow to isolate if the issue is at the ALB, the Nginx reverse proxy, or the application layer."
+---
 
-Example 1: Debug a Failing Shell Script Step-by-Step
+## 💡 Pro-Tips to Master DevOps Prompting
+### 🛡️ 1. Use System Role Prompting (The "Act As" Trick)
+Always prime the AI by giving it a specific persona. It shifts the AI's internal weights to prioritize engineering-grade outputs over generic answers.
+* *Bad:* "How do I secure docker?"
+* *Good:* `"Act as a Principal DevSecOps Engineer. Audit the following Dockerfile for security vulnerabilities, focusing on rootless execution, multi-stage builds, and credential leaks..."`
 
-```
-Prompt:
+### 🏗️ 2. Apply the "Context-Constraint-Output" (CCO) Framework
+Structure your prompts using this mental model to ensure you never get junk output:
+* **Context:** What is the current environment? (e.g., *"We are migrating from Jenkins to GitHub Actions..."*)
+* **Constraint:** What are the boundaries? (e.g., *"Do not use third-party marketplace actions; use raw shell commands only..."*)
+* **Output:** What format do you need? (e.g., *"Provide only the valid YAML block, no conversational text."*)
 
-My shell script is failing. Here is the script:
+### 🔍 3. The "Self-Correction" Loop
+Before running an AI-generated script in production, ask the model to review its own work.
+* **Follow-up Prompt:** `"Review the script you just generated. Identify any edge cases where it might fail (e.g., missing environment variables, empty directories, or network timeouts) and rewrite it to handle those gracefully."`
 
-#!/bin/bash
-mkdir -p /backup
-cp /var/logs/* /backup/
-
-It shows a "permission denied" error. How can I fix it? Please explain step-by-step.
-
-Response:
-
-First, check the permissions of /var/logs:
-
-ls -ld /var/logs
-
-If permissions are restricted, use sudo:
-
-sudo cp /var/logs/* /backup/
-
-If SELinux is enabled, adjust security context:
-
-sudo chcon -R -t user_home_t /backup
-```
-
-Example 2: Troubleshoot a Kubernetes Pod in CrashLoopBackOff
-
-```
-Prompt:
-
-My Kubernetes pod is in CrashLoopBackOff. Help me debug step-by-step.
-
-Response:
-
-First, check pod status:
-
-kubectl get pod <pod-name>
-
-Get detailed pod logs:
-
-kubectl logs <pod-name>
-
-Describe the pod to check for readiness/liveness probe issues:
-
-kubectl describe pod <pod-name>
-
-If the container is failing to start, fix the image or entry point issue:
-
-kubectl set image deployment <deployment-name> <container-name>=<new-image>
-```
-
+### 🛑 4. Never Share Secrets
+* **Rule of Thumb:** Never paste raw `.env` files, production Kubeconfigs, AWS IAM secret keys, or proprietary private keys into public LLMs. Use placeholders like `<AWS_ACCOUNT_ID>` or `your-api-key-here`.
+  
 ✅ Best Practices for Prompt Engineering
 
 Be clear and specific – The more specific the prompt, the better the output.
