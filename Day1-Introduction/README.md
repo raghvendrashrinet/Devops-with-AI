@@ -1,101 +1,50 @@
-# DevOps with AI - 10-Day Course Syllabus
+# Day - 1 
+
+## 1. Traditional AI in DevOps
+Traditional AI relies on **structured data, pre-defined rules, and predictive models** trained on historical data. It excels at classification, forecasting, and anomaly detection.
+
+### Example: Incident Detection & Prediction
+- **Use Case:** Predicting system failures before they occur.
+- **How It Works:**  
+  - Uses **log-based anomaly detection** and **pattern recognition** (e.g., time-series forecasting).  
+  - If CPU usage suddenly spikes beyond a threshold, AI predicts a potential issue.  
+  - The system alerts DevOps teams to take preventive action.  
+- **Limitations:**  
+  - Works only on pre-trained scenarios.  
+  - Cannot generate insights beyond structured input data.  
 
 ---
 
-## **Day 1: Introduction to AI for DevOps**
-### 📌 Topics
-- Why AI is a game-changer for DevOps
-- Overview of Generative AI and LLMs (without deep theory)
-- Popular AI tools for DevOps Engineers.
+## 2. Generative AI in DevOps
+Generative AI (Gen AI) leverages **large language models (LLMs)** to analyze, summarize, and even generate new content dynamically.
 
-- Hands-on: Create a GitHub repository that contains a bash script. when executed the bash script confirms the health of a virtual machine by looking at the parameters such as cpu, disk space, memory e.t.c.,. Please note that the bash script should also support a command line argument named "explain", when passed, "explain" provides the detailed summary of the health status.
-  
-### 🛠 Mini-Challenge
-- Try the hands-on demonstration explained in the video.
-
----
-
-## **Day 2: Prompt Engineering Masterclass**
-### 📌 Topics
-- **Fundamentals:** Tokens, temperature and max tokens.
-- **Techniques:** Zero-shot, few-shot, n-shot, and Chain-of-Thought (CoT) prompting
-- Writing structured prompts for DevOps use cases
-- AI-generated regex, Bash scripts, Terraform, and CI/CD configurations
-
-### 🛠 Hands-on
-- **Live Demo:** Demonstrate an example of few shot prompting in real time.
+### Example: AI-Powered Incident Resolution & RCA
+- **Use Case:** Automating root cause analysis (RCA) & remediation.  
+- **How It Works:**  
+  - **Understanding logs & metrics:** Gen AI processes unstructured log data, summarizes key issues, and suggests fixes.  
+  - **Chat-based troubleshooting:** DevOps engineers can ask Gen AI:  
+    _"Why did my Kubernetes pod crash?"_ → AI analyzes logs and suggests probable causes like OOM (Out of Memory) errors.  
+  - **Auto-remediation:** AI suggests and even applies fixes (e.g., increasing memory limits in a YAML file).  
+- **Advantages:**  
+  - No need for extensive labeled training data.  
+  - Can generate human-like explanations & solutions.  
+  - Adaptable to new/unseen failure patterns.  
 
 ---
 
-## **Day 3: Running LLMs Locally & Making API Calls**
-### 📌 Topics
-- Running **LLMs locally** (Ollama, LM Studio, GPT4All)
-- Calling AI **via APIs (OpenAI, Mistral, LLama, Deepseek e.t.c.,.)**
-- Python script to invoke ollama api
+## Key Differences Summary
 
-### 🛠 Hands-on
-- **Dockerfile Generation** "Call Ollama endpoint to auto-generate Docker manifests using llama3 model"
-
-### 🛠 Mini-Challenge
-- "Call an AI API to auto-generate Kubernetes manifests using llama3 model"
+| Feature            | Traditional AI                     | Generative AI                     |
+|-------------------|--------------------------------|--------------------------------|
+| **Data Type**      | Structured (logs, metrics)    | Structured + Unstructured (logs, docs, chat)  |
+| **Approach**       | Predictive, classification-based | Generative, contextual understanding |
+| **Use Case**       | Detect anomalies, forecast failures | Explain failures, automate remediation |
+| **Example**        | Alerts on high CPU usage       | Summarizes logs & suggests fixes |
+| **Limitation**     | Requires labeled datasets     | May generate incorrect suggestions (hallucinations) |
 
 ---
 
-## **Day 4: AI-Powered Shell Scripting & CLI Automation**
-### 📌 Topics
-- Using AI to improve Bash/Python scripting
-- AI-assisted Shell Scripting
-
-### 🛠 Hands-on
-- **Mini-Challenge:** "Generate a shell script to create VPC in AWS with all the best practices"
-
----
-
-## **Day 5: AI for Observability & Incident Response**
-### 📌 Topics
-- Introduction to AIOps
-- What is AIOps and What is not ?
-- AI-powered monitoring with **Enterprise Observability Platforms**
-
----
-
-## **Day 6: AIOps - AI for IT Operations**
-### 📌 Topics
-- **AIOps** Recap?
-- AI-powered **Log Analysis**
-- Using AI for **anomaly detection** (Python)
-
-### 🛠 Hands-on
-- **Demo:** "Use AI to predict server failures or app failures based on logs"
----
-
-## **Day 7: AI Agents for DevOps (Hands-on)**
-### 📌 Topics
-- **What are AI Agents?** How do they work?
-- Create your very First AI Agent in simple steps. 
-
-### 🛠 Hands-on
-- **Project:** Build a project using **simple AI agents** that performs a research and writes a detailed analysis in blog style.
----
-
-## **Day 8: AI Agents for DevOps **
-### 📌 Topics
-- Build an AI Agent for your Internal tools and documentation using CrewAI
-- In house AI Agents
-
-### 🛠 Hands-on
-- Build an AI agent to read internal documentation(PDF) and train it to answer user queries. 
-
-## **Day 9: AI for Security & FinOps (Cost Optimization)**
-### 📌 Topics
-- WIP
-
----
-
-## **Day 10: Capstone Project & Future of AI in DevOps**
-### 📌 Topics
-- Build an AI Agent
-- AI Agent for DevOps usecase
-- Deploy the AI Agent to Kubernetes
+## 3. Large Language Model
+A Large Language Model (LLM) is an advanced AI system trained on vast amounts of text data to understand, generate, and process human language. These models use deep learning techniques, particularly transformers (like GPT, BERT, or LLaMA), to recognize patterns, predict words, and generate human-like responses.
 
 ---
