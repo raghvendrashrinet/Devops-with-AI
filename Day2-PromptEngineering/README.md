@@ -1,10 +1,21 @@
 # Mastering Prompt Engineering for DevOps
 
 Prompt engineering is the art of crafting instructions to get the most accurate and helpful responses from AI models. In this guide, you'll learn how to master prompt engineering using the following techniques, with DevOps-related examples:
+## 📌 Quick Keyword Reference Guide
 
+Use this matrix to instantly decide which prompting technique fits your current task:
+
+| Technique | When to Use | DevOps Example Case | Efficiency |
+| :--- | :--- | :--- | :--- |
+| **Zero-Shot** | Simple, standard tasks with no unique context. | Writing basic Bash loops or generic Git commands. | 🚀 Fast & Direct |
+| **Few-Shot** | Custom syntax, strict formatting, or specific tool outputs. | Matching a proprietary log format or specific JSON output. | 📐 Structured |
+| **Multi-Shot** | Complex multi-command sequences or behavioral patterns. | Writing complex multi-stage Jenkinsfiles or GitLab CI. | 🤖 High Accuracy |
+| **Chain-of-Thought (CoT)** | Debugging errors, root-cause analysis, architecture design. | Troubleshooting a Kubernetes `CrashLoopBackOff` or IAM block. | 🧠 Deep Reasoning |
+
+---
 ## Zero-Shot Prompting
 
-In zero-shot prompting, the AI is asked to generate a response without any prior examples or context. It relies entirely on the AI’s general understanding of the task.
+In zero-shot prompting, You ask the AI to perform a task relying solely on its pre-trained knowledge, without providing any examples.
 
 Example 1: Generate a Shell Script to Backup Logs
 
