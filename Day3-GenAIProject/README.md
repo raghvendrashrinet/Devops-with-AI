@@ -60,14 +60,19 @@
 
 3. **Pull Llama3 Model**
    ```bash
+   #A small model of 1.3gb
    ollama pull llama3.2:1b
+
+   # A more small model of 600mb
+   ollama pull tinyllama    
    ```
 4. **Verify Installation**
    ```
-   # Test Ollama is running by pulling a small model
-     ollama pull tinyllama
-
    # Run a quick test
+     ollama run llama3.2:1b
+     >> create a docker file for python multi stage
+
+   
      ollama run tinyllama "Hello, how are you?"
  
   ## Python Project Overview: How to integrate LLMs into Python projects.
@@ -76,7 +81,31 @@
 ```
 ├── ├── LocalLLM/
 │   |     ├── Ollama/
+│   |           ├── README.md
+│   |           ├── generate_dockerfile.py (python program)
+│   |           ├── requirements.txt
 ├── ├── Hosted LLM/
           ├── Gemini
+│   |           ├── README.md
+│   |           ├── generate_dockerfile_gemini.py (python program)
+│   |          
 ```
 
+### 🚀 Project Setup
+Create Virtual Environment
+```
+python3 -m venv venv
+source venv/bin/activate  # On Linux/MacOS
+# or
+.\venv\Scripts\activate  # On Windows
+```
+Install Dependencies: REquirement file has ollam mentioned , For Python to talk to Local LLM Model it requires 
+some package to install to let it talk to LLM
+```
+pip3 install -r requirements.txt
+```
+
+Run the Application
+```
+python3 generate_dockerfile.py
+```
