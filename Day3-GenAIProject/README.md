@@ -78,13 +78,14 @@
  5. **Which Model Installed Locally**
     ```
     ollama list
-NAME           ID              SIZE      MODIFIED
-llama3.2:1b    baf6a787fdff    1.3 GB    34 minutes ago
-(venv) PS C:\Users\rag\Desktop\Olly\ollama>
-```
-  ## Python Project Overview: How to integrate LLMs into Python projects.
+     NAME           ID              SIZE      MODIFIED
+     llama3.2:1b    baf6a787fdff    1.3 GB    34 minutes ago
+   
+### Python Project Overview: How to integrate LLMs into Python projects.
   Project Objective : Generate a dockerfile for user provided programing language
   - Demonstrate Local vs Hosted LLM Integration
+
+#### Directory Structure
 ```
 ├── ├── LocalLLM/
 │   |     ├── Ollama/
@@ -92,7 +93,7 @@ llama3.2:1b    baf6a787fdff    1.3 GB    34 minutes ago
 │   |           ├── generate_dockerfile.py (python program)
 │   |           ├── requirements.txt
 ├── ├── Hosted LLM/
-          ├── Gemini
+│   |     ├── Gemini
 │   |           ├── README.md
 │   |           ├── generate_dockerfile_gemini.py (python program)
 │   |          
