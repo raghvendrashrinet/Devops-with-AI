@@ -37,3 +37,17 @@ generate_github_report:
     A production-ready markdown string suitable for a pull request comment.
   agent: compliance_officer
 ``` 
+---
+---
+Production Takeaways for your Templates
+The >- Scalar: In YAML, using >- allows you to write long sentences over multiple lines without inserting literal line breaks (\n) into the prompt. This keeps your templates highly readable.
+
+Dynamic Inputs: Notice variables like {git_diff} or {raw_logs}. In your main.py execution entrypoint, these variables are dynamically passed directly into the pipeline when triggering execution:
+
+```
+# Inside your main execution file
+inputs = {
+    "git_diff": "diff --git a/app.py b/app.py..."
+}
+my_crew.kickoff(inputs=inputs)
+```
