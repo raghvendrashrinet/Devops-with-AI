@@ -43,6 +43,10 @@ local_llm = LLM(
 
 Here is how to modify your crew.py structure:
 
+### Update the file w.r.t to your pdf 
+- Update agent.yml and task.yml
+- Update main.py -- > question = input("Please neter your question")
+- Crew.py --> change the pdf file name to your PDF -- filepath
 ### Running the project
 ```
 $ crewai run
